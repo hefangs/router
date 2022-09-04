@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Banner />
+    <router-link class="a" to="/home">home</router-link>
+    <router-link class="a" to="/about">about</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import Home from "./components/Home.vue"
+import Banner from "./components/Banner.vue"
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    // Home,
+    // About
+    Banner
   }
 }
 </script>
@@ -24,5 +29,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.a {
+  display: inline-block;
+  text-decoration: none;
+  background: skyblue;
+  color: hotpink;
+  margin: 10px;
+  border: 1px solid blanchedalmond;
+  border-radius: 10px;
+  font-size: 25px;
+}
+.a:active {
+  background: seagreen;
 }
 </style>
