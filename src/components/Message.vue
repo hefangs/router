@@ -4,7 +4,7 @@
     <ul>
       <li v-for="m in messageList" :key="m.id" @click="addData">
         <!-- params传参对象写法，只能是name，不能是path，需要route页面占位符 -->
-        <router-link
+        <!-- <router-link
           :to="{
             name: 'xiangqing',
             params: {
@@ -14,7 +14,7 @@
           }"
         >
           {{ m.id }}-{{ m.title }}
-        </router-link>
+        </router-link> -->
 
         <!-- params传参：to的字符串写法 -->
         <!-- <router-link :to="`/home/message/detail/${m.id}/${m.title}`">
@@ -53,6 +53,8 @@
           {{ m.id }}-{{ m.title }}
         </router-link>
          -->
+        <button @click="push(m)">push跳转</button>
+        <button @click="replace(m)">replace跳转</button>
       </li>
     </ul>
     <router-view></router-view>
@@ -87,6 +89,24 @@ export default {
         this.messageList.push(dataObj)
       })
       console.log(this.$route)
+    },
+    push(m) {
+      this.$router.push({
+        name: "xiangqing",
+        params: {
+          id: m.id || undefined,
+          title: m.title || undefined
+        }
+      })
+    },
+    replace(m) {
+      this.$router.replace({
+        name: "xiangqing",
+        params: {
+          id: m.id || undefined,
+          title: m.title || undefined
+        }
+      })
     }
   }
 }
