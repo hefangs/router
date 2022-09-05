@@ -1,7 +1,8 @@
 <template>
   <div>
     <ul>
-      <!-- <li>id:{{ $route.params.id }}--title:{{ $route.params.title }}</li> -->
+      <li>id:{{ $route.params.id }}</li>
+      <li>title:{{ $route.params.title }}</li>
     </ul>
   </div>
 </template>
