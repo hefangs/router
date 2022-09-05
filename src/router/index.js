@@ -13,22 +13,24 @@ const router = new VueRouter({
       name: "zhuye",
       path: "/home",
       component: Home,
+      meta: { title: "主页" },
       children: [
         {
           name: "xinwen",
           path: "news",
-          meta: { isAuth: true },
+          meta: { isAuth: true, title: "新闻" },
           component: News
         },
         {
           name: "xiaoxi",
           path: "message",
-          meta: { isAuth: true },
+          meta: { isAuth: true, title: "消息" },
           component: Message,
           children: [
             {
               name: "xiangqing",
               path: "detail/:id/:title",
+              meta: { title: "详情" },
               component: Detail,
 
               // 第一种：直接props:true, 将params参数传递给改组件，该组件直接通过props来接收
@@ -65,11 +67,12 @@ const router = new VueRouter({
     {
       name: "guanyu",
       path: "/about",
+      meta: { title: "关于" },
       component: About
     }
   ]
 })
-// 全局前置路由守卫
+// 全局路由前置守卫
 router.beforeEach((to, from, next) => {
   // 判断是否需要鉴权
   if (to.meta.isAuth) {
@@ -81,6 +84,11 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+// 全局路由后置守卫
+router.afterEach((to, from) => {
+  console.log(to, from)
+  document.title = to.meta.title || "router-系统"
 })
 
 export default router
