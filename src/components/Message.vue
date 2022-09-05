@@ -4,11 +4,14 @@
     <ul>
       <li v-for="m in messageList" :key="m.id" @click="addData">
         <!-- query传参：to的字符串写法 -->
+        <!-- <router-link :to="`/home/message/detail/id/title`">{{ m.id }}-{{ m.title }}</router-link> -->
+        <!-- query传参：to的字符串写法 -->
         <!-- <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`"> -->
         <!-- query传参：to的对象写法 -->
-        <router-link
+        <!-- <router-link
           :to="{
-            path: '/home/message/detail',
+            //name写法，需要在 message-route中增加name
+            name: 'xiaoxi',
             query: {
               id: m.id,
               title: m.title
@@ -16,7 +19,7 @@
           }"
         >
           {{ m.id }}-{{ m.title }}
-        </router-link>
+        </router-link> -->
       </li>
     </ul>
     <router-view></router-view>

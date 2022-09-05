@@ -18,11 +18,13 @@ export default new VueRouter({
           component: News
         },
         {
+          name: "xiaoxi",
           path: "message",
           component: Message,
           children: [
             {
-              path: "detail",
+              name: "xiangqing",
+              path: "detail/:id/:title",
               component: Detail
             }
           ]
