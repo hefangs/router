@@ -6,7 +6,9 @@
 
     <router-link class="a" to="/home/message">Message</router-link>
 
-    <router-view></router-view>
+    <keep-alive include="News">
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
