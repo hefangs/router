@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li>{{ $route.query.id }}--{{ $route.query.title }}</li>
+      <li>id:{{ $route.query.id }}--title:{{ $route.query.title }}</li>
     </ul>
   </div>
 </template>
