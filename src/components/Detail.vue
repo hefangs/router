@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul>
-      <li>id:{{ $route.params.id }}</li>
-      <li>title:{{ $route.params.title }}</li>
+      <li>id:{{ id }}</li>
+      <li>title:{{ title }}</li>
     </ul>
   </div>
 </template>
@@ -11,6 +11,7 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "About",
+  props: ["id", "title"],
   mounted() {
     console.log(this.$route)
   }
