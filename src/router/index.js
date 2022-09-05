@@ -7,19 +7,23 @@ import Detail from "../components/Detail.vue"
 import Vue from "vue"
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
+      name: "zhuye",
       path: "/home",
       component: Home,
       children: [
         {
+          name: "xinwen",
           path: "news",
+          meta: { isAuth: true },
           component: News
         },
         {
           name: "xiaoxi",
           path: "message",
+          meta: { isAuth: true },
           component: Message,
           children: [
             {
@@ -59,8 +63,24 @@ export default new VueRouter({
       ]
     },
     {
+      name: "guanyu",
       path: "/about",
       component: About
     }
   ]
 })
+// 全局前置路由守卫
+router.beforeEach((to, from, next) => {
+  // 判断是否需要鉴权
+  if (to.meta.isAuth) {
+    if (localStorage.getItem("school") === "abc") {
+      next()
+    } else {
+      alert("无权限")
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
