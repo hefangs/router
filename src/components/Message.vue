@@ -2,10 +2,13 @@
   <div>
     <h2>我是Message</h2>
     <ul>
-      <!-- <router-link to:"/home/message/detail"> -->
-      <li v-for="m in messageList" :key="m.id">id:{{ m.id }}---title:{{ m.title }}</li>
-      <!-- </router-link> -->
+      <li v-for="m in messageList" :key="m.id">
+        <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">
+          {{ m.id }}-{{ m.title }}
+        </router-link>
+      </li>
     </ul>
+    <router-view></router-view>
   </div>
 </template>
 
