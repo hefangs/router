@@ -88,12 +88,13 @@ export default {
         }
         this.messageList.push(dataObj)
       })
-      console.log(this.$route)
     },
     push(m) {
       this.$router.push({
-        name: "xiangqing",
-        params: {
+        // 编程式导航可以是path或者name，name-params，path-query，
+        // 对应的routes中props接受参数也要改动&params传参时要加占位符
+        path: "/home/message/detail",
+        query: {
           id: m.id || undefined,
           title: m.title || undefined
         }
@@ -101,8 +102,8 @@ export default {
     },
     replace(m) {
       this.$router.replace({
-        name: "xiangqing",
-        params: {
+        path: "/home/message/detail",
+        query: {
           id: m.id || undefined,
           title: m.title || undefined
         }

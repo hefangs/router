@@ -29,7 +29,7 @@ const router = new VueRouter({
           children: [
             {
               name: "xiangqing",
-              path: "detail/:id/:title",
+              path: "detail",
               meta: { title: "详情" },
               component: Detail,
 
@@ -53,7 +53,7 @@ const router = new VueRouter({
               //     title: params.title
               //   }
               // }
-              props({ params: { id, title } }) {
+              props({ query: { id, title } }) {
                 return {
                   id,
                   title
@@ -72,7 +72,7 @@ const router = new VueRouter({
     }
   ]
 })
-// 全局路由前置守卫
+// 全局前置路由守卫
 router.beforeEach((to, from, next) => {
   // 判断是否需要鉴权
   if (to.meta.isAuth) {
@@ -85,7 +85,7 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
-// 全局路由后置守卫
+// 全局后置路由守卫
 router.afterEach((to, from) => {
   console.log(to, from)
   document.title = to.meta.title || "router-系统"
