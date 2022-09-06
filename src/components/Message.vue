@@ -91,9 +91,9 @@ export default {
     },
     push(m) {
       this.$router.push({
-        // 编程式导航可以是path或者name，name-params，path-query，
+        // 编程式导航可以是path或者name，name-params，path-query(name-query)
         // 对应的routes中props接受参数也要改动&params传参时要加占位符
-        path: "/home/message/detail",
+        name: "xiangqing",
         query: {
           id: m.id || undefined,
           title: m.title || undefined
@@ -102,7 +102,7 @@ export default {
     },
     replace(m) {
       this.$router.replace({
-        path: "/home/message/detail",
+        name: "xiangqing",
         query: {
           id: m.id || undefined,
           title: m.title || undefined
